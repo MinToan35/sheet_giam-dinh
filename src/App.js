@@ -4,10 +4,11 @@ import * as XLSX from "xlsx";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductCard from "./components/ProductCard";
+import useLocalStorage from "./hooks/useLocalStorage";
 const App = () => {
   const [showModal, setShowModal] = useState(false);
-  const [items, setItems] = useState();
-  const [value, setValue] = useState(0);
+  const [items, setItems] = useLocalStorage("items", []);
+  const [value, setValue] = useLocalStorage("value", 0);
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [certificate, setCertificate] = useState([]);
@@ -293,7 +294,6 @@ const App = () => {
   };
 
   const downloadExcel = async () => {
-    console.log("download");
     handleOnSave();
     const wb = XLSX.utils.book_new();
 
@@ -321,6 +321,8 @@ const App = () => {
     setData1([]);
     setData2([]);
   };
+
+  console.log("items", items);
 
   return (
     <>
@@ -489,6 +491,7 @@ const App = () => {
           value={value}
           onClose={() => setShowModal(false)}
           items={items}
+          setItems={setItems}
         />
       )}
 

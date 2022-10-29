@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./productcard.scss";
 
-const ProductCard = ({ onClose, items, value }) => {
+const ProductCard = ({ onClose, items, setItems, value }) => {
   const [info, setInfo] = useState([
     {
       contNumber: "",
@@ -60,12 +60,14 @@ const ProductCard = ({ onClose, items, value }) => {
   };
 
   const handleSubmit = async () => {
-    items[value] = {
-      ...items[value],
+    const newItems = items;
+    newItems[value] = {
+      ...newItems[value],
       info,
       cont: info.map((item) => item.contNumber),
       seal: info.map((item) => item.sealNumber),
     };
+    setItems([...newItems]);
 
     onClose();
   };
