@@ -7,6 +7,7 @@ import ProductCard from "./components/ProductCard";
 import useLocalStorage from "./hooks/useLocalStorage";
 const App = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
   const [items, setItems] = useLocalStorage("items", []);
   const [value, setValue] = useLocalStorage("value", 0);
   const [data1, setData1] = useState([]);
@@ -326,7 +327,7 @@ const App = () => {
 
   return (
     <>
-      {!showModal && (
+      {!showModal && !showWarning && (
         <div className={`table__container`}>
           {items && items.length > 0 ? (
             <div className="pd-2">
@@ -496,6 +497,7 @@ const App = () => {
       )}
 
       {items &&
+        !showWarning &&
         !showModal &&
         items.length > 0 &&
         items
@@ -505,12 +507,25 @@ const App = () => {
             <button className="btn-download" onClick={downloadExcel}>
               Download
             </button>
-            <button className="btn-reset" onClick={() => setItems([])}>
+            <button className="btn-reset" onClick={() => setShowWarning(true)}>
               Reset Data
             </button>
           </>
         )}
 
+      {showWarning && (
+        <div className="card">
+          <div className="card__container">
+            <button onClick={() => setShowWarning(false)}>
+              <i className="fa-solid fa-x icon-close"></i>
+            </button>
+            <h2>Bạn có chắc chắn muốn xáo không</h2>
+            <button className="btn-save" onClick={() => setItems([])}>
+              Xác nhận
+            </button>
+          </div>
+        </div>
+      )}
       <ToastContainer
         position="top-right"
         autoClose={2500}
