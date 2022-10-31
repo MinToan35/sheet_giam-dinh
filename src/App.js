@@ -500,9 +500,14 @@ const App = () => {
         items
           .filter((item) => item["PASS/FAIL"] === "PASS")
           .every((item) => item.info) && (
-          <button className="btn-download" onClick={downloadExcel}>
-            Download
-          </button>
+          <>
+            <button className="btn-download" onClick={downloadExcel}>
+              Download
+            </button>
+            <button className="btn-download" onClick={() => setItems([])}>
+              Reset Data
+            </button>
+          </>
         )}
 
       <ToastContainer
