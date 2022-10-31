@@ -496,6 +496,7 @@ const App = () => {
       )}
 
       {items &&
+        !showModal &&
         items.length > 0 &&
         items
           .filter((item) => item["PASS/FAIL"] === "PASS")
