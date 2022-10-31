@@ -520,7 +520,13 @@ const App = () => {
               <i className="fa-solid fa-x icon-close"></i>
             </button>
             <h2 className="text-center">Bạn có chắc chắn muốn xóa không</h2>
-            <button className="btn-save" onClick={() => setItems([])}>
+            <button
+              className="btn-save"
+              onClick={() => {
+                setItems([]);
+                setShowWarning(false);
+              }}
+            >
               Xác nhận
             </button>
           </div>
