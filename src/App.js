@@ -504,7 +504,7 @@ const App = () => {
             <button className="btn-download" onClick={downloadExcel}>
               Download
             </button>
-            <button className="btn-download" onClick={() => setItems([])}>
+            <button className="btn-reset" onClick={() => setItems([])}>
               Reset Data
             </button>
           </>

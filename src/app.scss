@@ -113,7 +113,7 @@ th {
   }
 
 
-  .btn-download {
+  .btn-download,.btn-reset {
     display: block;
     margin: 0 auto;
     position: relative;
@@ -130,10 +130,14 @@ th {
     transition: all 0.1s;
 }
 
-.btn-download:hover,
-.btn-download:active {
+.btn-download:hover,.btn-reset:hover,
+.btn-download:active,.btn-reset:active {
     -webkit-transform: translate(0px, 5px);
     -ms-transform: translate(0px, 5px);
     transform: translate(0px, 5px);
     border-bottom: 1px solid rgb(255, 106, 107);
+}
+
+.btn-reset{
+  margin-top: 3rem;
 }
